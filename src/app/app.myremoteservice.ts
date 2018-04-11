@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Component } from '@angular/core';
 import { URLSearchParams, QueryEncoder} from '@angular/http';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -15,17 +16,17 @@ export class MyRemoteService {
     loginModel: LoginModel;
     public site: string;
     constructor(private http: Http) { 
-       this.site = 'http://localhost:3000/tokenapi/'
+       this.site = 'http://localhost:3000/'
     }
 
     // GET  - Retreive data available to anyone. No token required.
     getPublicInfo(): Observable<Comment[]> {
-        let headers = new Headers({ 'Content-Type': 'application/json' }); 
+        let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({
           headers: headers
         });
 
-        let dataUrl = this.site + 'public';  
+        let dataUrl = this.site + 'public';
         return this.http.get(dataUrl, options)
             .map(this.extractData)
             .catch(this.handleError);
@@ -55,7 +56,7 @@ export class MyRemoteService {
     postLogin(_feedback: Object): Observable<Comment[]> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        let url     = this.site + "login";
+        let url     = this.site + "users/login";
 
         let LoginModel = {
             "Email": _feedback["userName"],
