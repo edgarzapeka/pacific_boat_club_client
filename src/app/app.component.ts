@@ -10,16 +10,18 @@ import {  MyRemoteService } from './app.myremoteservice';
 })
 export class AppComponent {
     remoteService: MyRemoteService;
-    userName: string;
+    email: string;
     password: string;
     token:    string;
-    publicData:any;
-    privateData:any;
+    publicData: any;
+    privateData: Array<any>;
     message:string;
+     
 
     // Since using a provider above we can receive service.
     constructor(_remoteService: MyRemoteService) {
         this.remoteService = _remoteService;
+        this.getPrivateData();
     }
 
     getPublicData() {  
@@ -36,11 +38,11 @@ export class AppComponent {
     }
 
     getPrivateData() {
-        this.remoteService.getPrivateInfo().subscribe(
-            // Success.
+        this.remoteService.getBoat().subscribe(
+            // Success.privateData
             data => {
-                this.privateData    = data;
-                console.log(data)
+                this.privateData    = data['data'];
+                console.log(this.privateData);
             },
             // Error.
             error => {
@@ -48,11 +50,11 @@ export class AppComponent {
             })
     }
 
-    login(userName,password) {  
+    login(email, password) {  
         // Create the JavaScript object in the format
         // required by the server.
         let FeedBackObject = {
-            "userName": userName,
+            "email": email,
             "password": password
         }
         this.remoteService.postLogin(FeedBackObject).subscribe(
@@ -64,11 +66,11 @@ export class AppComponent {
                 this.message     = "The user has been logged in."
                 this.privateData = null;
                 this.publicData  = null;
-                console.log(data)
+                console.log(data);
             },
             // Error.
             error => {
-                alert(error)
+                alert(error);
             })
     }
 

@@ -19,13 +19,40 @@ export class MyRemoteService {
        this.site = 'http://localhost:3000/'
     }
 
+    postRegistration(_feedback: Object): Observable<Comment[]> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({
+          headers: headers
+        });
+        let firstname: String;
+        let lastname: String;
+        let street: String;
+        let city: String;
+        let province: String;
+        let postalCode: String;
+        let country: String;
+        let email: String;
+        let password: String;
+        let role: String;
+        let creationDate: String;
+
+        let dataUrl = this.site + '';
+
+        return this.http.get(dataUrl, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     // GET  - Retreive data available to anyone. No token required.
     getPublicInfo(): Observable<Comment[]> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({
           headers: headers
         });
-
+        headers.append( 'Authorization', 'Bearer ' + sessionStorage.getItem('auth_token'));
+        options = new RequestOptions({
+            headers: headers
+        });
         let dataUrl = this.site + 'public';
         return this.http.get(dataUrl, options)
             .map(this.extractData)
@@ -39,8 +66,7 @@ export class MyRemoteService {
 
         // Need to include 'Authorization' property with token in header.
         // Read token value from the JavaScript session.
-        headers.append( 'Authorization', 'Bearer ' 
-                     + sessionStorage.getItem('auth_token'))
+        headers.append( 'Authorization', 'Bearer '  + sessionStorage.getItem('token'));
         let options = new RequestOptions({
             headers: headers
         });
@@ -52,15 +78,32 @@ export class MyRemoteService {
             .catch(this.handleError);
     } 
 
+    getBoat(): Observable<Comment[]> {
+        let headers = new Headers({ 'Content-Type': 'application/json' }); 
+
+        // Need to include 'Authorization' property with token in header.
+        // Read token value from the JavaScript session.
+        //headers.append( 'Authorization', 'JWT '  + sessionStorage.getItem('token'));
+        let options = new RequestOptions({
+            headers: headers
+        });
+        console.log(headers);
+
+        let dataUrl = this.site + 'boat/list';  
+        return this.http.get(dataUrl, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    } 
+
     // POST - login
     postLogin(_feedback: Object): Observable<Comment[]> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        let url     = this.site + "users/login";
+        let url     = this.site + "user/authenticate";
 
         let LoginModel = {
-            "Email": _feedback["userName"],
-            "Password": _feedback["password"]
+            "email": _feedback["email"],
+            "password": _feedback["password"]
         }
         return this.http.post(url, LoginModel, options)
             .map(this.extractData) 
@@ -70,6 +113,7 @@ export class MyRemoteService {
     // Retreival of JSON from .NET is a success.
     private extractData(res: Response) {
         let body = res.json();
+        console.log(body.data[0].BoatName + body.data[0].BoatYear);
         return body;
     }
 

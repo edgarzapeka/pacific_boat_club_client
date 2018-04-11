@@ -1,7 +1,7 @@
 <!-- Login -->
-User Name: <input type='text' [(ngModel)]="userName"><br />
+Email: <input type='text' [(ngModel)]="email"><br />
 Password:  <input type='text' [(ngModel)]="password"><br />
-<input type="submit" (click)="login(userName,password)"><br />
+<input type="submit" (click)="login(email,password)"><br />
 <!-- Shows token after login is successful. -->
 {{token}}
 <br /><br />
@@ -18,9 +18,14 @@ Get Public Data.
 Get Private Data.
 <input type="submit" (click)="getPrivateData()"><br />
 <div *ngFor="let item of privateData">
-    {{item.email}}
+    <ul>
+        <li> {{item.BoatName}} here </li>
+    </ul>
+    
 </div>
 <br /><br />
+
+<app-boat></app-boat>
 
 <!-- Logout. -->
 <input type="submit" (click)="log_out()" value="log out"><br />
