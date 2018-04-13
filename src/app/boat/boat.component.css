@@ -1,6 +1,6 @@
 img {
     width: 120px;
-    height: 100px;
+    height: 109px;
     position: absolute;
     right: 0;
 }
@@ -9,8 +9,12 @@ li {
     margin: 10px;
     border: 1px solid ;
     position: relative;
-    height: 102px;
+    height: 110px;
     
+}
+button {
+    position: absolute;
+    bottom: 0;
 }
 
 /* .panel-body {

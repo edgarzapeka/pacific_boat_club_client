@@ -6,20 +6,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 // This component consumes the re-usable service.
 @Component({
     selector: 'app-root',
-    template:   
-    `
-    <nav>
-    <a routerLink="/Home" routerLinkActive="active">Home</a>  |
-    <a routerLink="/Boat" routerLinkActive="active">Boat</a>  |
-    <a routerLink="/User" routerLinkActive="active">User</a>  |
-    <a routerLink="/Login" routerLinkActive="active">Login</a>|  
-    <a routerLink="/Register" routerLinkActive="active">Register</a>|
-    <a routerLink="/Logout" routerLinkActive="active">Logout</a> 
-    </nav>
-  <!-- Where router should display a view -->
-  <router-outlet></router-outlet>`
+    styleUrls: ['./app.component.css'],
 
-    // templateUrl: 'app.component.html',
+     templateUrl: 'app.component.html',
     // Providers allow us to inject an object instance through the constructor.
     providers: [MyRemoteService]
 })

@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
   userrole: string;
   creationdate: Date;
   remoteService: MyRemoteService;
+  sanitizer: DomSanitizer;
    constructor(_remoteService: MyRemoteService, sanitizer: DomSanitizer ) {
       this.remoteService = _remoteService;
       this.sanitizer = sanitizer;
