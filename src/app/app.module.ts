@@ -10,15 +10,22 @@ import { BoatComponent } from './boat/boat.component';
 import { UserComponent } from './user/user.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { routing } from './app.routing';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoatComponent,
-    UserComponent
+    UserComponent,
+    LoginComponent,
+    LogoutComponent,
+    RegisterComponent
   ],
   imports: [
-    BrowserModule, FormsModule, HttpModule
+    BrowserModule, FormsModule, HttpModule, routing
   ],
   providers: [BoatserviceService, UserserviceService, MyRemoteService],
   bootstrap: [AppComponent]

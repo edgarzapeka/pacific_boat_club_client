@@ -78,7 +78,7 @@ export class MyRemoteService {
             .catch(this.handleError);
     } 
 
-    getBoat(): Observable<Comment[]> {
+    getBoats(): Observable<Comment[]> {
         let headers = new Headers({ 'Content-Type': 'application/json' }); 
 
         // Need to include 'Authorization' property with token in header.
@@ -90,6 +90,22 @@ export class MyRemoteService {
         console.log(headers);
 
         let dataUrl = this.site + 'boat/list';  
+        return this.http.get(dataUrl, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    } 
+    getUsers(): Observable<Comment[]> {
+        let headers = new Headers({ 'Content-Type': 'application/json' }); 
+
+        // Need to include 'Authorization' property with token in header.
+        // Read token value from the JavaScript session.
+        headers.append( 'Authorization', 'JWT '  + sessionStorage.getItem('token'));
+        let options = new RequestOptions({
+            headers: headers
+        });
+        console.log(headers);
+
+        let dataUrl = this.site + 'user/list';
         return this.http.get(dataUrl, options)
             .map(this.extractData)
             .catch(this.handleError);
@@ -109,11 +125,34 @@ export class MyRemoteService {
             .map(this.extractData) 
             .catch(this.handleError); 
     } 
+
+    createUser(_feedback: Object): Observable<Comment[]> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        let url     = this.site + "user/createUser";
+
+        let UserModel = {
+            "firstname": _feedback["firstname"],
+            "lastname": _feedback["lastname"],
+            "email": _feedback["email"],
+            "password": _feedback["password"],
+            "street": _feedback["street"],
+            "city": _feedback["city"],
+            "province": _feedback["province"],
+            "postalCode": _feedback["postalcode"],
+            "country": _feedback["country"],
+            "userrole": "member",
+            "creationdate": Date.now,
+        }
+        return this.http.post(url, UserModel, options)
+            .map(this.extractData) 
+            .catch(this.handleError); 
+    } 
     
     // Retreival of JSON from .NET is a success.
     private extractData(res: Response) {
         let body = res.json();
-        console.log(body.data[0].BoatName + body.data[0].BoatYear);
+        //console.log(body.data[0].BoatName + body.data[0].BoatYear);
         return body;
     }
 

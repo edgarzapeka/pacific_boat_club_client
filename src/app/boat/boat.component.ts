@@ -8,15 +8,28 @@ import {  MyRemoteService } from '../app.myremoteservice';
   providers: [MyRemoteService]
 })
 export class BoatComponent implements OnInit {
-  privateData: any;
   remoteService: MyRemoteService;
+  privateData: Array<any>;
   constructor(_remoteService: MyRemoteService) {
     this.remoteService = _remoteService;
-    
+    this.getPrivateData();
 }
 
   ngOnInit() {
 
   }
+
+  getPrivateData() {
+    this.remoteService.getBoats().subscribe(
+        // Success.privateData
+        data => {
+            this.privateData    = data['data'];
+            console.log(this.privateData);
+        },
+        // Error.
+        error => {
+            alert(error)
+        })
+}
 
 }

@@ -1,32 +1,57 @@
+
+<nav>
+    <a routerLink="/Home" routerLinkActive="active">Home</a>  |
+    <a routerLink="/Boat" routerLinkActive="active">Boat</a>  |
+    <a routerLink="/User" routerLinkActive="active">User</a>  |
+    <a routerLink="/Login" routerLinkActive="active">Login</a>|  
+    <a routerLink="/Logout" routerLinkActive="active">Logout</a> 
+</nav>
+<router-outlet></router-outlet>
 <!-- Login -->
-Email: <input type='text' [(ngModel)]="email"><br />
+<!-- Email: <input type='text' [(ngModel)]="email"><br />
 Password:  <input type='text' [(ngModel)]="password"><br />
-<input type="submit" (click)="login(email,password)"><br />
+<input type="submit" (click)="login(email,password)"><br /> -->
 <!-- Shows token after login is successful. -->
-{{token}}
+<!-- {{token}} -->
 <br /><br />
 
 <!-- Retreives public data. -->
-Get Public Data.
+<!-- Get Public Data.
 <input type="submit" (click)="getPublicData()"><br />
 <div *ngFor="let item of publicData">
     {{item.email}}
 </div>
-<br /><br />
+<br /><br /> -->
 
 <!-- Requests private data. Token is required. -->
 Get Private Data.
-<input type="submit" (click)="getPrivateData()"><br />
-<div *ngFor="let item of privateData">
+<input type="submit" (click)="getPrivateData()" class="btn btn-default"><br />
+ 
+<!-- <div *ngFor="let item of privateData">
+    <div  style="display:grid; grid-template-columns: 1fr 1fr 1fr;">
     <ul>
-        <li> {{item.BoatName}} here </li>
+         
+        <li>
+             
+                 
+                    <img src={{item.BoatPictureUrl.changingThisBreaksApplicationSecurity}} alt="Boat image">
+                        <span>{{item.BoatName}}</span> 
+                        <span>{{item.BoatYear}}</span> 
+                        <span>{{item.BoatCapacityInPeople}}</span>
+                        
+                        <span>{{item.RentedBy}}</span>
+                 
+ 
+             
+        </li>
+     
     </ul>
+    </div>
     
-</div>
+</div> -->
+ 
 <br /><br />
-
-<app-boat></app-boat>
-
+ 
 <!-- Logout. -->
-<input type="submit" (click)="log_out()" value="log out"><br />
-{{message}}
+<!-- <input type="submit" (click)="log_out()" value="log out"><br />
+{{message}} -->

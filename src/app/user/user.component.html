@@ -1,3 +1,26 @@
-<p>
-  user works!
-</p>
+<div *ngFor="let item of privateData">
+  <ul>
+      <div class="col-lg-2 col-md-3 col-sm-6"> 
+      <li>
+          <div class="panel panel-default"> 
+              <div class="panel-image">
+                <a class="btn btn-default" href="user/edit/{{item._id}}">Edit</a>
+                      
+                      <span>{{item.FirstName}}</span> 
+                      <span>{{item.LastName}}</span> 
+                      <span>{{item.email}}</span>                      
+                      <span>{{item.password}}</span>
+                      <span>{{item.street}}</span>
+                      <span>{{item.city}}</span>
+                      <span>{{item.province}}</span>
+                      <span>{{item.postalCode}}</span>
+                      <span>{{item.country}}</span>
+                       
+              </div>
+
+          </div> 
+      </li>
+  </div>
+  </ul>
+  
+</div>
