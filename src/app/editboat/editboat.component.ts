@@ -53,7 +53,7 @@ export class EditboatComponent implements OnInit {
  
   // }
   // }
-  updateBoat(BoatName, BoatLengthInFeet, BoatYear, BoatCapacityInPeople, BoatPictureUrl) {
+  updateBoat(BoatName, BoatLengthInFeet, BoatYear, BoatCapacityInPeople, BoatPictureUrl, RentedBy) {
     let FeedBackObject = {
       '_id': this.id,
       'BoatName': BoatName,
@@ -61,7 +61,7 @@ export class EditboatComponent implements OnInit {
       'BoatYear': BoatYear,
       'BoatCapacityInPeople': BoatCapacityInPeople,
       'BoatPictureUrl': BoatPictureUrl,
-      'RentedBy': ''
+      'RentedBy': RentedBy == null ? "" : RentedBy
   }
     this.remoteService.updateBoat(FeedBackObject).subscribe(
       // Success.
