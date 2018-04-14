@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  MyRemoteService } from '../app.myremoteservice';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +10,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   providers: [MyRemoteService]
 })
 export class RegisterComponent implements OnInit {
+  private router: Router;
   firstname: string;
   lastname: string;
   email: string;
@@ -22,13 +24,18 @@ export class RegisterComponent implements OnInit {
   creationdate: Date;
   remoteService: MyRemoteService;
   sanitizer: DomSanitizer;
-   constructor(_remoteService: MyRemoteService, sanitizer: DomSanitizer ) {
+   constructor(_remoteService: MyRemoteService, sanitizer: DomSanitizer, _router: Router) {
       this.remoteService = _remoteService;
       this.sanitizer = sanitizer;
+      this.router = _router;
       // this.getPrivateData();
   }
 
   ngOnInit() {
+    let token = localStorage.getItem('token')
+    if (token && token != "null"){
+        this.router.navigate(['/']);
+    }
   }
 
   register(firstname,lastname,email, password,street,city, province, postalcode, country){

@@ -9,22 +9,24 @@
                 <a class="nav-link" routerLink="" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="" routerLinkActive="active">Boat</a>
+                <a class="nav-link" routerLink="/Boat" routerLinkActive="active">Boat</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="isUserAuthenticated">
                 <a class="nav-link" routerLink="/User" routerLinkActive="active">User</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/Login" routerLinkActive="active">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/Register" routerLinkActive="active">Register</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/Logout" routerLinkActive="active">Logout</a>
             </li>
         </ul>
     </div>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item" *ngIf="!isUserAuthenticated">
+            <a class="nav-link" routerLink="/Login" routerLinkActive="active">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!isUserAuthenticated">
+            <a class="nav-link" routerLink="/Register" routerLinkActive="active">Register</a>
+        </li>
+        <li class="nav-item" *ngIf="isUserAuthenticated">
+            <a class="nav-link" routerLink="/Logout" routerLinkActive="active">Logout</a>
+        </li>
+    </ul>
 </nav>
 <div class="container">
     <router-outlet></router-outlet>  

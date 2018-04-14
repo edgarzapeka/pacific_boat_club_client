@@ -21,15 +21,21 @@ export class LoginComponent implements OnInit {
   privateData: Array<any>;
   message: string;
   sanitizer: DomSanitizer;
+
   // Since using a provider above we can receive service.
-  constructor(_remoteService: MyRemoteService, sanitizer: DomSanitizer ) {
+  constructor(_remoteService: MyRemoteService, sanitizer: DomSanitizer, _route: ActivatedRoute, _router: Router ) {
       this.remoteService = _remoteService;
       this.sanitizer = sanitizer;
+      this.route = _route;
+      this.router = _router;
       // this.getPrivateData();
   }
 
   ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/boat/list';
+    let token = localStorage.getItem('token')
+    if (token && token != "null"){
+        this.router.navigate(['/']);
+    }
   }
   login(email, password) {  
     // Create the JavaScript object in the format
@@ -48,7 +54,8 @@ export class LoginComponent implements OnInit {
             this.privateData = null;
             this.publicData  = null;
             console.log(data);
-            this.router.navigate([this.returnUrl]);
+            
+            window.location.reload();
         },
         // Error.
         error => {

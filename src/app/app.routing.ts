@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: 'Register', component:  RegisterComponent },
   { path: 'Logout', component:  LogoutComponent },
   { path: '', component: HomeComponent },
-  //{ path: '**', component: AppComponent }
+  { path: '**', component: HomeComponent }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

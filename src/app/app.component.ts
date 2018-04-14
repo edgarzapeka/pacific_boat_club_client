@@ -17,6 +17,7 @@ export class AppComponent {
     email: string;
     password: string;
     token:    string;
+    isUserAuthenticated: boolean;
     publicData: any;
     privateData: Array<any>;
     message: string;
@@ -28,6 +29,16 @@ export class AppComponent {
         this.remoteService = _remoteService;
         this.sanitizer = sanitizer;
         this.getPrivateData();
+        this.token = localStorage.getItem('token')
+        if (this.token && this.token != "null"){
+            this.isUserAuthenticated = true;
+            console.log('IF TRUE token = ' + this.token)
+        } else{
+            this.isUserAuthenticated = false;
+            console.log('IF False token = ' + this.token)
+        }
+        console.log(this.token)
+        console.log(this.isUserAuthenticated)
     }
 
     getPublicData() {
