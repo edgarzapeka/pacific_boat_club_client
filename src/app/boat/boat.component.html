@@ -15,7 +15,7 @@ Boat list
                         <div>Year: {{item.BoatYear}}</div> 
                         <div>Capacity: {{item.BoatCapacityInPeople}}</div>                        
                         <div >Rented by: {{item.RentedBy}}</div>
-                        <button (click)="login(email,password)">Edit {{item._id}}</button>
+                        <button ><a routerLink="/EditBoat/{{item._id}}">Edit</a> </button>
                     </div>
                     <img src="{{item.BoatPictureUrl}}" alt="Boat image" >
 
