@@ -1,13 +1,34 @@
-
-<nav class="nav navbar-nav">
-    <a routerLink="/Home" routerLinkActive="active">Home</a>  |
-    <a routerLink="/Boat" routerLinkActive="active">Boat</a>  |
-    <a routerLink="/User" routerLinkActive="active">User</a>  |
-    <a routerLink="/Login" routerLinkActive="active">Login</a>|  
-    <a routerLink="/Register" routerLinkActive="active">Register</a>|
-    <a routerLink="/Logout" routerLinkActive="active">Logout</a> 
-    </nav>
-<router-outlet></router-outlet>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/Home"  routerLinkActive="active">Pacific Boat Club</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/Home" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/Boat" routerLinkActive="active">Boat</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/User" routerLinkActive="active">User</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/Login" routerLinkActive="active">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/Register" routerLinkActive="active">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/Logout" routerLinkActive="active">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <router-outlet></router-outlet>  
+</div>
 <!-- Login -->
 <!-- Email: <input type='text' [(ngModel)]="email"><br />
 Password:  <input type='text' [(ngModel)]="password"><br />

@@ -99,7 +99,7 @@ export class MyRemoteService {
 
         // Need to include 'Authorization' property with token in header.
         // Read token value from the JavaScript session.
-        headers.append( 'Authorization', 'JWT '  + sessionStorage.getItem('token'));
+        headers.append( 'Authorization', 'JWT '  + localStorage.getItem('token'));
         let options = new RequestOptions({
             headers: headers
         });
