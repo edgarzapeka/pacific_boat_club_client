@@ -42,13 +42,15 @@ export class RegisterComponent implements OnInit {
     let FeedBackObject = {
         'firstname': firstname,
         'lastname': lastname,
-        'passowrd': password,
+        'password': password,
+        'email': email,
         'street': street,
         'city': city,
         'province': province,
         'postalCode': postalcode,
         'country': country
     }
+    
     this.remoteService.postRegistration(FeedBackObject).subscribe(
       data => {
         console.log(data);
