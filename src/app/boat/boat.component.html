@@ -1,33 +1,21 @@
 Boat list
 <input type="submit" (click)="getPrivateData()" class="btn btn-default"><br />
 <div class="container" >
- 
-<ul style ="list-style: none;display: grid; grid-template-columns: 1fr 1fr 1fr;"> 
-<div *ngFor="let item of privateData">
-    
-        <!-- <div class="col-lg-2 col-md-3 col-sm-6">  -->
-        <li >
-            <!-- <div class="panel panel-default">  -->
-                <!-- <div class="panel-image"> -->
-                     
-                    <div class="box">
-                        <div>Name: {{item.BoatName}}</div> 
-                        <div>Year: {{item.BoatYear}}</div> 
-                        <div>Capacity: {{item.BoatCapacityInPeople}}</div>                        
-                        <div >Rented by: {{item.RentedBy}}</div>
-                        <button (click)="login(email,password)">Edit {{item._id}}</button>
-                    </div>
-                    <img src="{{item.BoatPictureUrl}}" alt="Boat image" >
-
-                <!-- </div> -->
- 
-            <!-- </div>  -->
-        </li>
-    <!-- </div> -->
-     
-    
-</div>
-</ul>
+    <ul style ="list-style: none;display: grid; grid-template-columns: 1fr 1fr 1fr;"> 
+    <div *ngFor="let item of privateData">
+            <li >
+                <div class="box">
+                    <div>Name: {{item.BoatName}}</div> 
+                    <div>Year: {{item.BoatYear}}</div> 
+                    <div>Capacity: {{item.BoatCapacityInPeople}}</div>                        
+                    <div >Rented by: {{item.RentedBy}}</div>
+                    <button (click)="login(email,password)">Edit {{item._id}}</button>
+                    <button (click)="deleteBoat(item._id)">Delete</button>
+                </div>
+                <img src="{{item.BoatPictureUrl}}" alt="Boat image" >
+            </li>
+    </div>
+    </ul>
 </div>
 <br /><br />
  

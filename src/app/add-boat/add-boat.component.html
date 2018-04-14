@@ -1,0 +1,30 @@
+<div class="addBoatPage">
+  <h1>Add New Boat</h1>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Boat Name</label>
+        <input type="text" class="form-control" name="boatName" [(ngModel)]="boatName">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Boat Length In Feet</label>
+        <input type="text" class="form-control" name="boatLengthInFeet" [(ngModel)]="boatLengthInFeet">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>BoatPictureUrl</label>
+      <input type="text" class="form-control" name="boatPictureUrl" [(ngModel)]="boatPictureUrl">
+    </div>
+    <div class="form-row">
+      <div class="form-group col">
+        <label>Boat Capacity In People</label>
+        <input type="text" class="form-control" name="boatCapacityInPeople" [(ngModel)]="boatCapacityInPeople">
+      </div>
+      <div class="form-group col">
+        <label>Boat Year</label>
+        <input type="text" class="form-control" name="boatYear" [(ngModel)]="boatYear">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addBoat(boatName,boatLengthInFeet, boatPictureUrl, boatCapacityInPeople, boatYear)">Add</button>
+  </form>
+</div>

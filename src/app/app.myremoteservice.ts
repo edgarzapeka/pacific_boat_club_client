@@ -21,9 +21,9 @@ export class MyRemoteService {
 
     postRegistration(_feedback: Object): Observable<Comment[]> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({
-          headers: headers
-        });
+        let options = new RequestOptions({ headers: headers });
+        let url     = this.site + "user/register";
+
         let firstname: String;
         let lastname: String;
         let street: String;
@@ -38,45 +38,10 @@ export class MyRemoteService {
 
         let dataUrl = this.site + '';
 
-        return this.http.get(dataUrl, options)
+        return this.http.post(url, _feedback, options)
             .map(this.extractData)
             .catch(this.handleError);
     }
-
-    // GET  - Retreive data available to anyone. No token required.
-    getPublicInfo(): Observable<Comment[]> {
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({
-          headers: headers
-        });
-        headers.append( 'Authorization', 'Bearer ' + sessionStorage.getItem('auth_token'));
-        options = new RequestOptions({
-            headers: headers
-        });
-        let dataUrl = this.site + 'public';
-        return this.http.get(dataUrl, options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    } 
-
-    // GET - Retrieve data that is available to authorized users only.
-    // Token required.
-    getPrivateInfo(): Observable<Comment[]> {
-        let headers = new Headers({ 'Content-Type': 'application/json' }); 
-
-        // Need to include 'Authorization' property with token in header.
-        // Read token value from the JavaScript session.
-        headers.append( 'Authorization', 'Bearer '  + sessionStorage.getItem('token'));
-        let options = new RequestOptions({
-            headers: headers
-        });
-        console.log(headers);
-
-        let dataUrl = this.site + 'protected';  
-        return this.http.get(dataUrl, options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    } 
 
     getBoats(): Observable<Comment[]> {
         let headers = new Headers({ 'Content-Type': 'application/json' }); 
@@ -144,32 +109,36 @@ export class MyRemoteService {
             "userrole": "member",
             "creationdate": Date.now,
         }
-        return this.http.post(url, UserModel, options)
+        return this.http.post(url, BoatModel, options)
             .map(this.extractData) 
             .catch(this.handleError); 
-    } 
-    createUser(_feedback: Object): Observable<Comment[]> {
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-        let url     = this.site + "user/createUser";
+    }
 
-        let UserModel = {
-            "firstname": _feedback["firstname"],
-            "lastname": _feedback["lastname"],
-            "email": _feedback["email"],
-            "password": _feedback["password"],
-            "street": _feedback["street"],
-            "city": _feedback["city"],
-            "province": _feedback["province"],
-            "postalCode": _feedback["postalcode"],
-            "country": _feedback["country"],
-            "userrole": "member",
-            "creationdate": Date.now,
-        }
-        return this.http.post(url, UserModel, options)
-            .map(this.extractData) 
-            .catch(this.handleError); 
-    } 
+    addBoat(_boat: Object){
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let url     = this.site + "boat/add";
+        headers.append( 'Authorization', 'JWT '  + localStorage.getItem('token'));
+        let options = new RequestOptions({
+            headers: headers
+        });
+
+        return this.http.post(url, _boat, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    deleteBoat(_boatId: string){
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let url     = this.site + `boat/delete/${_boatId}`;
+        headers.append( 'Authorization', 'JWT '  + localStorage.getItem('token'));
+        let options = new RequestOptions({
+            headers: headers
+        });
+
+        return this.http.get(url, options)
+            .map(this.extractData)
+            .catch(this.handleError)
+    }
     
     // Retreival of JSON from .NET is a success.
     private extractData(res: Response) {
