@@ -60,7 +60,8 @@ export class UserComponent implements OnInit {
                 });
 
             } else {
-                alert('Geocode was not successful for the following reason: ' + status);
+                //alert('Geocode was not successful for the following reason: ' + status);
+                console.log(`The user: ${userName} Address failed to to on the map: ${address}`)
             }
         });
     }
