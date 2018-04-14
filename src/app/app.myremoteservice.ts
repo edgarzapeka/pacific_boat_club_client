@@ -126,6 +126,28 @@ export class MyRemoteService {
             .catch(this.handleError); 
     } 
 
+    updateBoat(_feedback: Object): Observable<Comment[]> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        let url     = this.site + "user/createUser";
+
+        let BoatModel = {
+            "BoatName": _feedback["Boatname"],
+            "BoatLengthInFeet": _feedback["BoatLengthInFeet"],
+            "BoatYear": _feedback["email"],
+            "password": _feedback["password"],
+            "street": _feedback["street"],
+            "city": _feedback["city"],
+            "province": _feedback["province"],
+            "postalCode": _feedback["postalcode"],
+            "country": _feedback["country"],
+            "userrole": "member",
+            "creationdate": Date.now,
+        }
+        return this.http.post(url, UserModel, options)
+            .map(this.extractData) 
+            .catch(this.handleError); 
+    } 
     createUser(_feedback: Object): Observable<Comment[]> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
