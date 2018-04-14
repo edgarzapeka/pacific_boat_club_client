@@ -1,3 +1,10 @@
 form {
     margin: 5px;
 }
+.registerPage{
+    width: 50%;
+    margin: 0 auto;
+}
+.registerPage h1{
+    text-align: center;
+}

@@ -1,45 +1,64 @@
-<form method="post" action="/users/register">
-  <div class="form-group">
-      <label>First Name</label>
-      <input class="form-control" placeholder="First Name" name="firstname" [(ngModel)]="firstname" "/>
-  </div>
-  <div class="form-group">
-      <label>Last Name</label>
-      <input class="form-control" placeholder="Last Name" name="lastname" [(ngModel)]="lastname" />
-  </div>
-  <div class="form-group">
-      <label>Email</label>
-      <input class="form-control" type="text" placeholder="Email" name="email" [(ngModel)]="email" />
-  </div>
-  <div class="form-group">
-      <label>Password</label>
-      <input class="form-control" type="text" placeholder="Password" name="password" [(ngModel)]="password"  />
-  </div>
-  <div class="form-group">
-      <label>Confirm Password</label>
-      <input class="form-control" type="text" placeholder="Confirm Password" name="password2" />
-  </div>
-  <div class="form-group">
-      <label>Street</label>
-      <input class="form-control" type="text" placeholder="Street" name="street" [(ngModel)]="street"  />
-  </div>
-   <div class="form-group">
-      <label>City</label>
-      <input class="form-control" type="text" placeholder="City" name="city" [(ngModel)]="city" />
-  </div>
-   <div class="form-group">
-      <label>Province</label>
-      <input class="form-control" type="text" placeholder="Province" name="province" [(ngModel)]="province"  />
-  </div>
-  <div class="form-group">
-      <label>Postal Code</label>
-      <input class="form-control" type="text"  placeholder="Postal Code" name="postalcode" [(ngModel)]="postalcode"  />
-  </div>
-  <div class="form-group">
-      <label>Country</label>
-      <input class="form-control" type="text" placeholder="Country" name="country" [(ngModel)]="country"  />
-  </div>
-  <button type="submit" class="btn btn-default" (click)="register(firstname, lastname, email, password, street, city, province, postalcode, country)">
-      Submit
-  </button>
+<div class="registerPage">
+    <h1>Resistration</h1>
+    <form>
+        <div class="form-group">
+            <label>First Name</label>
+            <input class="form-control" placeholder="First Name" name="firstname" [(ngModel)]="firstname" />
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input class="form-control" placeholder="Last Name" name="lastname" [(ngModel)]="lastname" />
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" type="text" placeholder="Email" name="email" [(ngModel)]="email" />
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input class="form-control" type="text" placeholder="Password" name="password" [(ngModel)]="password"  />
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input class="form-control" type="text" placeholder="Confirm Password" name="password2" />
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Street</label>
+                    <input class="form-control" type="text" placeholder="Street" name="street" [(ngModel)]="street"  />
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>City</label>
+                    <input class="form-control" type="text" placeholder="City" name="city" [(ngModel)]="city" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Province</label>
+                    <input class="form-control" type="text" placeholder="Province" name="province" [(ngModel)]="province"  />
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Postal Code</label>
+                    <input class="form-control" type="text"  placeholder="Postal Code" name="postalcode" [(ngModel)]="postalcode"  />
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Country</label>
+                    <input class="form-control" type="text" placeholder="Country" name="country" [(ngModel)]="country"  />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" (click)="register(firstname, lastname, email, password, street, city, province, postalcode, country)">
+                    Register
+            </button>
+        </div>
 </form>
+</div>
