@@ -115,7 +115,7 @@ export class MyRemoteService {
         let BoatModel = {
             'BoatName': _feedback['boatName'],
             'BoatLengthInFeet': _feedback['boatLengthInFeet'],
-            'BoatYear': _feedback['email'],
+            'BoatYear': _feedback['boatYear'],
             'BoatCapacityInPeople': _feedback['BoatCapacityInPeople'],
             "BoatPictureUrl": _feedback["BoatPictureUrl"],
             "RentedBy": _feedback["RentedBy"]

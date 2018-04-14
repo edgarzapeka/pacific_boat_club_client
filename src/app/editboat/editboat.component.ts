@@ -30,6 +30,7 @@ export class EditboatComponent implements OnInit {
       this.id = params['id'];
       this.remoteService.getBoat(this.id).subscribe(
         data => {
+          console.log('here is this boat specific data');
             console.log(data);
         }
       )
