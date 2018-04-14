@@ -21,15 +21,26 @@ export class BoatComponent implements OnInit {
 
   getPrivateData() {
     this.remoteService.getBoats().subscribe(
-        // Success.privateData
-        data => {
-            this.privateData    = data['data'];
-            console.log(this.privateData);
-        },
-        // Error.
-        error => {
-            alert(error)
-        })
-}
+      // Success.privateData
+      data => {
+          this.privateData    = data['data'];
+          console.log(this.privateData);
+      },
+      // Error.
+      error => {
+          alert(error)
+      })
+  }
 
+  deleteBoat(boatId){
+    this.remoteService.deleteBoat(boatId).subscribe(
+      data => {
+        console.log(data)
+        window.location.reload();
+      },
+      error => {
+        alert(error)
+      }
+    )
+  }
 }

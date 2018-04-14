@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
         'postalCode': postalcode,
         'country': country
     }
-    this.remoteService.createUser(FeedBackObject).subscribe(
+    this.remoteService.postRegistration(FeedBackObject).subscribe(
       data => {
         console.log(data);
       },

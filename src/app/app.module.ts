@@ -15,7 +15,11 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+<<<<<<< HEAD
 import { EditboatComponent } from './editboat/editboat.component';
+=======
+import { AddBoatComponent } from './add-boat/add-boat.component';
+>>>>>>> 7a0f53f2e567c23c6d7173b671ad2251a4f2df3e
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { EditboatComponent } from './editboat/editboat.component';
     LogoutComponent,
     RegisterComponent,
     HomeComponent,
+<<<<<<< HEAD
     EditboatComponent
+=======
+    AddBoatComponent
+>>>>>>> 7a0f53f2e567c23c6d7173b671ad2251a4f2df3e
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, routing
