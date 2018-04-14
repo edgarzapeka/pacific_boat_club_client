@@ -75,6 +75,21 @@ export class MyRemoteService {
             .map(this.extractData)
             .catch(this.handleError);
     } 
+    getBoat(id): Observable<Comment[]> {
+        let headers = new Headers({ 'Content-Type': 'application/json' }); 
+
+        headers.append( 'Authorization', 'JWT '  + localStorage.getItem('token'));
+        let options = new RequestOptions({
+            headers: headers
+        });
+        console.log(headers);
+
+        let dataUrl = this.site + 'boat/getBoat/' + id ;
+        return this.http.get(dataUrl, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    } 
+    
 
     // POST - login
     postLogin(_feedback: Object): Observable<Comment[]> {
@@ -93,21 +108,17 @@ export class MyRemoteService {
 
     updateBoat(_feedback: Object): Observable<Comment[]> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append( 'Authorization', 'JWT '  + localStorage.getItem('token'));
         let options = new RequestOptions({ headers: headers });
-        let url     = this.site + "user/createUser";
+        let url = this.site + 'boat/edit/';
 
         let BoatModel = {
-            "BoatName": _feedback["Boatname"],
-            "BoatLengthInFeet": _feedback["BoatLengthInFeet"],
-            "BoatYear": _feedback["email"],
-            "password": _feedback["password"],
-            "street": _feedback["street"],
-            "city": _feedback["city"],
-            "province": _feedback["province"],
-            "postalCode": _feedback["postalcode"],
-            "country": _feedback["country"],
-            "userrole": "member",
-            "creationdate": Date.now,
+            'BoatName': _feedback['boatName'],
+            'BoatLengthInFeet': _feedback['boatLengthInFeet'],
+            'BoatYear': _feedback['boatYear'],
+            'BoatCapacityInPeople': _feedback['BoatCapacityInPeople'],
+            "BoatPictureUrl": _feedback["BoatPictureUrl"],
+            "RentedBy": _feedback["RentedBy"]
         }
         return this.http.post(url, BoatModel, options)
             .map(this.extractData) 

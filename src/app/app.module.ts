@@ -1,3 +1,4 @@
+import { EditboatComponent } from './editboat/editboat.component';
 import { MyRemoteService } from './app.myremoteservice';
 import { BoatserviceService } from './boatservice.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +17,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AddBoatComponent } from './add-boat/add-boat.component';
+import { EditboatComponent } from './editboat/editboat.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { AddBoatComponent } from './add-boat/add-boat.component';
     LogoutComponent,
     RegisterComponent,
     HomeComponent,
-    AddBoatComponent
+    AddBoatComponent,
+    EditboatComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, routing
