@@ -113,9 +113,10 @@ export class MyRemoteService {
         let url = this.site + 'boat/edit/';
 
         let BoatModel = {
-            'BoatName': _feedback['boatName'],
-            'BoatLengthInFeet': _feedback['boatLengthInFeet'],
-            'BoatYear': _feedback['boatYear'],
+            '_id': _feedback['_id'],
+            'BoatName': _feedback['BoatName'],
+            'BoatLengthInFeet': _feedback['BoatLengthInFeet'],
+            'BoatYear': _feedback['BoatYear'],
             'BoatCapacityInPeople': _feedback['BoatCapacityInPeople'],
             "BoatPictureUrl": _feedback["BoatPictureUrl"],
             "RentedBy": _feedback["RentedBy"]

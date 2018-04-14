@@ -2,30 +2,37 @@
  
   <div>
     <label for="boatName" >Boat Name:</label>
-    <input  type="text"  id="boatName" name="boatName" value="hard code value">
+    <input  type="text"  id="boatName" name="BoatName" value="{{BoatName}}" name="BoatName" [(ngModel)]="BoatName">
   </div>  
    <div>    
      <label for="boatLengthInFeet" >Boat Length:</label>
-    <input  type="text"  id="boatLengthInFeet" name="boatLengthInFeet" value="hard code value"> <br /><br />
+    <input  type="text"  id="boatLengthInFeet" name="BoatLengthInFeet" value="{{BoatLengthInFeet}}" [(ngModel)]="BoatLengthInFeet"> <br /><br />
    </div>
    <div>    
-      <label for="boatYear" >boatYear:</label>
-     <input  type="text"  id="boatYear" name="boatYear" value="hard code value"> <br /><br />
-   </div>
+      <label for="BoatYear" >Boat Length:</label>
+     <input  type="text"  id="BoatYear" name="BoatYear" value="{{BoatYear}}" [(ngModel)]="BoatYear"> <br /><br />
+    </div>
+ 
    <div>    
       <label for="BoatCapacityInPeople" >BoatCapacityInPeople:</label>
-      <input  type="text"  id="BoatCapacityInPeople" name="BoatCapacityInPeople" value="hard code value"> <br /><br />
+      <input  type="text"  id="BoatCapacityInPeople" name="BoatCapacityInPeople" value="{{BoatCapacityInPeople}}" [(ngModel)]="BoatCapacityInPeople"> <br /><br />
    </div>
    <div>    
-      <label for="boatPictureUrl" >boatPictureUrl:</label>
-      <input  type="text"  id="boatPictureUrl" name="boatPictureUrl" value="hard code value"> <br /><br />
+      <label for="BoatPictureUrl" >boatPictureUrl:</label>
+      <input  type="text"  id="BoatPictureUrl" name="BoatPictureUrl" value="{{BoatPictureUrl}}" [(ngModel)]="BoatPictureUrl"> <br /><br />
    </div>       
    <div>    
-      <label for="rentedBy" >rentedBy:</label>
-      <input  type="text"  id="rentedBy" name="rentedBy" value="hard code value"> <br /><br />
+      <label for="RentedBy" >rentedBy:</label>
+      <input  type="text"  id="rentedBy" name="RentedBy" value="{{RentedBy}}" [(ngModel)]="RentedBy">
+      <div *ngIf="RentedBy ; else Rent" >
+          <button>Return</button>
+          <ng-template #Rent><button>Rent</button></ng-template>
+      </div>
+      
+        <br /><br />
    </div>  
   <div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" (click)="updateBoat(BoatName, BoatLengthInFeet, BoatYear, BoatCapacityInPeople, BoatPictureUrl)">Submit</button>
   </div>
      
 </form>

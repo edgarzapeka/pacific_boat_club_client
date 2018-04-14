@@ -44,4 +44,4 @@ export class AddBoatComponent implements OnInit {
       })
     }
   }
-}
+

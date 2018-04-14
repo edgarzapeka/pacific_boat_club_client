@@ -14,9 +14,15 @@ export class EditboatComponent implements OnInit {
   returnUrl: string;
   remoteService: MyRemoteService;
   sanitizer: DomSanitizer;
-  boatName: string;
+  BoatName: string;
+  BoatLengthInFeet: string;
+  BoatYear: string;
   message: string;
+  BoatPictureUrl: string;
+  BoatCapacityInPeople: string;
+  RentedBy: string;
   id: string;
+
   constructor(_remoteService: MyRemoteService, sanitizer: DomSanitizer, _route: ActivatedRoute, _router: Router ) {
     this.remoteService = _remoteService;
     this.sanitizer = sanitizer;
@@ -30,6 +36,12 @@ export class EditboatComponent implements OnInit {
       this.id = params['id'];
       this.remoteService.getBoat(this.id).subscribe(
         data => {
+          this.BoatName = data["data"].BoatName;
+          this.BoatLengthInFeet = data["data"].BoatLengthInFeet;
+          this.BoatYear = data["data"].BoatYear;
+          this.BoatCapacityInPeople = data["data"].BoatCapacityInPeople;
+          this.BoatPictureUrl=data["data"].BoatPictureUrl;
+          this.RentedBy = data["data"].RentedBy;
           console.log('here is this boat specific data');
             console.log(data);
         }
@@ -41,10 +53,15 @@ export class EditboatComponent implements OnInit {
  
   // }
   // }
-  updateBoat(boatName, boatLengthInFeet) {
+  updateBoat(BoatName, BoatLengthInFeet, BoatYear, BoatCapacityInPeople, BoatPictureUrl) {
     let FeedBackObject = {
-      'BoatName': boatName,
-      'BoatLengthInFeet': boatLengthInFeet
+      '_id': this.id,
+      'BoatName': BoatName,
+      'BoatLengthInFeet': BoatLengthInFeet,
+      'BoatYear': BoatYear,
+      'BoatCapacityInPeople': BoatCapacityInPeople,
+      'BoatPictureUrl': BoatPictureUrl,
+      'RentedBy': ''
   }
     this.remoteService.updateBoat(FeedBackObject).subscribe(
       // Success.

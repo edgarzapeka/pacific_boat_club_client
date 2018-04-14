@@ -1,4 +1,4 @@
-import { EditboatComponent } from './editboat/editboat.component';
+ 
 import { MyRemoteService } from './app.myremoteservice';
 import { BoatserviceService } from './boatservice.service';
 import { BrowserModule } from '@angular/platform-browser';

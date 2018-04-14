@@ -41,18 +41,18 @@ export class AppComponent {
         console.log(this.isUserAuthenticated)
     }
 
-    getPublicData() {
-        this.remoteService.getPublicInfo().subscribe(
-            // Success.
-            data => {
-                this.publicData    = data;
-                console.log(data);
-            },
-            // Error.
-            error => {
-                alert(error);
-            })
-    }
+    // getPublicData() {
+    //     this.remoteService.getPublicInfo().subscribe(
+    //         // Success.
+    //         data => {
+    //             this.publicData    = data;
+    //             console.log(data);
+    //         },
+    //         // Error.
+    //         error => {
+    //             alert(error);
+    //         })
+    // }
 
     getPrivateData() {
         this.remoteService.getBoats().subscribe(
