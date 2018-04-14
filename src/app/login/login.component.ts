@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
   token:    string;
+  email_token: string;
   publicData: any;
   privateData: Array<any>;
   message: string;
@@ -49,7 +50,9 @@ export class LoginComponent implements OnInit {
         data => {
             // Store token with session data.
             localStorage.setItem('token', data['token']);
+            localStorage.setItem('email_token', email);
             this.token       = data['token'];
+            this.email_token = data['email_token'];
             this.message     = 'The user has been logged in.';
             this.privateData = null;
             this.publicData  = null;
