@@ -10,12 +10,17 @@ import {  MyRemoteService } from '../app.myremoteservice';
 export class BoatComponent implements OnInit {
   remoteService: MyRemoteService;
   privateData: Array<any>;
+  ifAdmin: boolean; 
   constructor(_remoteService: MyRemoteService) {
     this.remoteService = _remoteService;
     this.getPrivateData();
+    this.ifAdmin = false;
 }
 
   ngOnInit() {
+    if (localStorage.getItem('user_role') === 'admin'){
+      this.ifAdmin = true;
+  }
 
   }
 

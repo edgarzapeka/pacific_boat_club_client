@@ -24,6 +24,8 @@ export class LogoutComponent implements OnInit {
     // Jwt has no sense of logout on the server so just
     // destroy the token on the client.
     localStorage.setItem('token', null);
+    localStorage.setItem('email_token', null);
+    localStorage.setItem('user_role', null); 
     window.location.reload();
     this.message = 'You are logged out.';
 }  

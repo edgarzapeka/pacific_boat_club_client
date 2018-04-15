@@ -16,8 +16,8 @@ Boat list
                         <div>Capacity: {{item.BoatCapacityInPeople}}</div>                        
                         <div >Rented by: {{item.RentedBy}}</div>
                         <div>
-                                <button ><a routerLink="/EditBoat/{{item._id}}">Edit</a> </button>
-                                <button (click)="deleteBoat(item._id)">Delete</button>
+                                <button ><a routerLink="/EditBoat/{{item._id}}" *ngIf="ifAdmin">Edit</a> </button>
+                                <button (click)="deleteBoat(item._id)" *ngIf="ifAdmin">Delete</button>
  
                                 <button *ngIf="!item.RentedBy" (click)="updateBoat(item._id, item.BoatName, item.BoatLengthInFeet, item.BoatYear, item.BoatCapacityInPeople, item.BoatPictureUrl) " >Reserve</button>
                         </div>

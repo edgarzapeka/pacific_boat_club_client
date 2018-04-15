@@ -22,16 +22,20 @@ export class AppComponent {
     privateData: Array<any>;
     message: string;
     sanitizer: DomSanitizer;
-     
+    ifAdmin: boolean; 
 
     // Since using a provider above we can receive service.
     constructor(_remoteService: MyRemoteService, sanitizer: DomSanitizer ) {
         this.remoteService = _remoteService;
         this.sanitizer = sanitizer;
         this.getPrivateData();
-        this.token = localStorage.getItem('token')
+        this.token = localStorage.getItem('token');
+        this.ifAdmin = false;
         if (this.token && this.token != "null"){
             this.isUserAuthenticated = true;
+            if (localStorage.getItem('user_role') === 'admin'){
+                this.ifAdmin = true;
+            }
             console.log('IF TRUE token = ' + this.token)
         } else{
             this.isUserAuthenticated = false;

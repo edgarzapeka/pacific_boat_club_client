@@ -12,7 +12,7 @@
                 <a class="nav-link" routerLink="/Boat" routerLinkActive="active">Boat</a>
             </li>
             <li class="nav-item" *ngIf="isUserAuthenticated">
-                <a class="nav-link" routerLink="/User" routerLinkActive="active">User</a>
+                <a class="nav-link" routerLink="/User" routerLinkActive="active"  *ngIf="ifAdmin">User</a>
             </li>
         </ul>
     </div>
