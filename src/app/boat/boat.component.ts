@@ -16,7 +16,7 @@ export class BoatComponent implements OnInit {
     this.remoteService = _remoteService;
     this.getPrivateData();
     let token = localStorage.getItem('token')
-    if (!this.token && token == "null"){
+    if (!token && token == "null"){
       _router.navigate(['/']);
     }
     this.ifAdmin = false;

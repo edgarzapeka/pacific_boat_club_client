@@ -16,7 +16,7 @@ export class MyRemoteService {
     loginModel: LoginModel;
     public site: string;
     constructor(private http: Http) { 
-       this.site = 'https://damp-thicket-12764.herokuapp.com'
+       this.site = 'https://damp-thicket-12764.herokuapp.com/'
     }
 
     postRegistration(_feedback: Object): Observable<Comment[]> {
