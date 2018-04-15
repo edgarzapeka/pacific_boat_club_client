@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
             // Store token with session data.
             localStorage.setItem('token', data['token']);
             localStorage.setItem('email_token', email);
+            localStorage.setItem('user_role', data['userRole']); 
             this.token       = data['token'];
             this.email_token = data['email_token'];
             this.message     = 'The user has been logged in.';

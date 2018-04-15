@@ -69,7 +69,7 @@ export class EditboatComponent implements OnInit {
          // this.publicData  = null;
          console.log(this.message);
           console.log(data);
-          window.location.reload();
+          // window.location.reload();
       },
       // Error.
       error => {

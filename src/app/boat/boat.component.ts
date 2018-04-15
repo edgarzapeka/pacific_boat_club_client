@@ -19,6 +19,35 @@ export class BoatComponent implements OnInit {
 
   }
 
+  updateBoat(Id, BoatName, BoatLengthInFeet, BoatYear, BoatCapacityInPeople, BoatPictureUrl) {
+    let FeedBackObject = {
+      '_id': Id,
+      'BoatName': BoatName,
+      'BoatLengthInFeet': BoatLengthInFeet,
+      'BoatYear': BoatYear,
+      'BoatCapacityInPeople': BoatCapacityInPeople,
+      'BoatPictureUrl': BoatPictureUrl,
+      'RentedBy': localStorage.getItem('email_token')
+    }
+    this.remoteService.updateBoat(FeedBackObject).subscribe(
+      // Success.
+      data => {
+          // Store token with session data.
+          // localStorage.setItem('token', data['token']);
+          // this.token       = data['token'];
+          //this.message     = 'boat updated.';
+         // this.privateData = null;
+         // this.publicData  = null;
+          console.log(data);
+          window.location.reload();
+      },
+      // Error.
+      error => {
+          alert(error);
+      })
+  }
+
+
   getPrivateData() {
     this.remoteService.getBoats().subscribe(
       // Success.privateData

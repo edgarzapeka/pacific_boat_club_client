@@ -24,10 +24,6 @@
    <div>    
       <label for="RentedBy" >rentedBy:</label>
       <input  type="text"  id="rentedBy" name="RentedBy" value="{{RentedBy}}" [(ngModel)]="RentedBy">
-      <div *ngIf="RentedBy ; else Rent" >
-          <button (click)="returnBoat()">Return Boat</button>
-          <ng-template #Rent><button>Rent</button></ng-template>
-      </div>
       
         <br /><br />
    </div>  

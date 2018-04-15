@@ -90,11 +90,14 @@ export class MyRemoteService {
             .catch(this.handleError);
     } 
     
-    updateRentStatus(_feedback: Object) {
+    updateRentStatus(_feedback: Object): Observable<Comment[]> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append( 'Authorization', 'JWT '  + localStorage.getItem('token'));
         let options = new RequestOptions({ headers: headers });
         let url = this.site + 'boat/rent/';
+
+        console.log(_feedback)
+
         return this.http.post(url, _feedback, options)
             .map(this.extractData)
             .catch(this.handleError);

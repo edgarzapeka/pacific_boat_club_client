@@ -18,6 +18,8 @@ Boat list
                         <div>
                                 <button ><a routerLink="/EditBoat/{{item._id}}">Edit</a> </button>
                                 <button (click)="deleteBoat(item._id)">Delete</button>
+ 
+                                <button *ngIf="!item.RentedBy" (click)="updateBoat(item._id, item.BoatName, item.BoatLengthInFeet, item.BoatYear, item.BoatCapacityInPeople, item.BoatPictureUrl) " >Reserve</button>
                         </div>
                     </div>
                     <img src="{{item.BoatPictureUrl}}" alt="Boat image" >
