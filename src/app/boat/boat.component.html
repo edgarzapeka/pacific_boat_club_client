@@ -1,5 +1,5 @@
-Boat list
-<input type="submit" (click)="getPrivateData()" class="btn btn-default"><br />
+<!-- Boat list
+<input type="submit" (click)="getPrivateData()" class="btn btn-default"><br /> -->
 <div class="container" >
  
 <ul style ="list-style: none;display: grid; grid-template-columns: 1fr 1fr 1fr;"> 
@@ -11,18 +11,24 @@ Boat list
                 <!-- <div class="panel-image"> -->
                      
                     <div class="box">
-                        <div>Name: {{item.BoatName}}</div> 
-                        <div>Year: {{item.BoatYear}}</div> 
-                        <div>Capacity: {{item.BoatCapacityInPeople}}</div>                        
-                        <div >Rented by: {{item.RentedBy}}</div>
-                        <div>
-                                <button ><a routerLink="/EditBoat/{{item._id}}" *ngIf="ifAdmin">Edit</a> </button>
-                                <button (click)="deleteBoat(item._id)" *ngIf="ifAdmin">Delete</button>
- 
-                                <button *ngIf="!item.RentedBy" (click)="updateBoat(item._id, item.BoatName, item.BoatLengthInFeet, item.BoatYear, item.BoatCapacityInPeople, item.BoatPictureUrl) " >Reserve</button>
+                        <div class="leftColumn">
+                            <div>Name: {{item.BoatName}}</div> 
+                            <div>Year: {{item.BoatYear}}</div> 
+                            <div>Length: {{item.BoatLengthInFeet}}</div> 
+                            <div>Capacity: {{item.BoatCapacityInPeople}}</div>                        
+                            <div >Rented by: {{item.RentedBy}}</div>
+                            <div>
+                                    <button *ngIf="ifAdmin"><a routerLink="/EditBoat/{{item._id}}">Edit</a> </button>
+                                    <button (click)="deleteBoat(item._id)" *ngIf="ifAdmin">Delete</button>
+        
+                                    <button *ngIf="!item.RentedBy" (click)="updateBoat(item._id, item.BoatName, item.BoatLengthInFeet, item.BoatYear, item.BoatCapacityInPeople, item.BoatPictureUrl) " >Reserve</button>
+                            </div>
+                        </div>
+                        <div class="rightColumn">
+                            <img src="{{item.BoatPictureUrl}}" alt="Boat image" >
                         </div>
                     </div>
-                    <img src="{{item.BoatPictureUrl}}" alt="Boat image" >
+                    
 
                 <!-- </div> -->
  

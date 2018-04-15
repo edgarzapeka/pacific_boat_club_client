@@ -9,7 +9,7 @@
                 <a class="nav-link" routerLink="" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/Boat" routerLinkActive="active">Boat</a>
+                <a class="nav-link" routerLink="/Boat" routerLinkActive="active" *ngIf="isUserAuthenticated">Boat</a>
             </li>
             <li class="nav-item" *ngIf="isUserAuthenticated">
                 <a class="nav-link" routerLink="/User" routerLinkActive="active"  *ngIf="ifAdmin">User</a>
@@ -48,8 +48,8 @@ Password:  <input type='text' [(ngModel)]="password"><br />
 <br /><br /> -->
 
 <!-- Requests private data. Token is required. -->
-Get Private Data.
-<input type="submit" (click)="getPrivateData()" class="btn btn-default"><br />
+<!-- Get Private Data.
+<input type="submit" (click)="getPrivateData()" class="btn btn-default"><br /> -->
  
 <!-- <div *ngFor="let item of privateData">
     <div  style="display:grid; grid-template-columns: 1fr 1fr 1fr;">

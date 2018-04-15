@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
         'street': street,
         'city': city,
         'province': province,
-        'postalCode': postalcode,
+        'postalcode': postalcode,
         'country': country
     }
     

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  MyRemoteService } from '../app.myremoteservice';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boat',
@@ -11,9 +12,13 @@ export class BoatComponent implements OnInit {
   remoteService: MyRemoteService;
   privateData: Array<any>;
   ifAdmin: boolean; 
-  constructor(_remoteService: MyRemoteService) {
+  constructor(_remoteService: MyRemoteService, _router: Router) {
     this.remoteService = _remoteService;
     this.getPrivateData();
+    let token = localStorage.getItem('token')
+    if (!this.token && token == "null"){
+      _router.navigate(['/']);
+    }
     this.ifAdmin = false;
 }
 
