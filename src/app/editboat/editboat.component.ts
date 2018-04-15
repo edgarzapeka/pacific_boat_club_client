@@ -53,6 +53,29 @@ export class EditboatComponent implements OnInit {
  
   // }
   // }
+  returnBoat() {
+    let FeedBackObject = {
+      'BoatId': this.id,
+      'RentedBy': ''
+    }
+    this.remoteService.updateRentStatus(FeedBackObject).subscribe(
+      // Success.
+      data => {
+          // Store token with session data.
+          // localStorage.setItem('token', data['token']);
+          // this.token       = data['token'];
+          this.message     = 'boat returned.';
+         // this.privateData = null;
+         // this.publicData  = null;
+         console.log(this.message);
+          console.log(data);
+          window.location.reload();
+      },
+      // Error.
+      error => {
+          alert(error);
+      })
+  }
 
 
   updateBoat(BoatName, BoatLengthInFeet, BoatYear, BoatCapacityInPeople, BoatPictureUrl, RentedBy) {
@@ -64,7 +87,7 @@ export class EditboatComponent implements OnInit {
       'BoatCapacityInPeople': BoatCapacityInPeople,
       'BoatPictureUrl': BoatPictureUrl,
       'RentedBy': RentedBy == null ? "" : RentedBy
-  }
+    }
     this.remoteService.updateBoat(FeedBackObject).subscribe(
       // Success.
       data => {
